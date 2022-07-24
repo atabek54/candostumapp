@@ -165,7 +165,6 @@ changeSign(){
   this.isLogin=!this.isLogin
 }
 modalDismiss(){
-  window.location.reload();
   this.modalCtrl.dismiss();
 }
 
