@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private modalCtrl:ModalController
+    private modalCtrl:ModalController,
+
     ) {
 http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
   this.iller=data;
@@ -55,6 +56,7 @@ http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subsc
     this.loadingCtrl.dismiss();
   }
   ngOnInit() {
+    window.location.reload();
 
     const user = JSON.parse(localStorage.getItem('user'));
 if(user){
