@@ -56,7 +56,7 @@ http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subsc
     this.loadingCtrl.dismiss();
   }
   ngOnInit() {
-    window.location.reload();
+
 
     const user = JSON.parse(localStorage.getItem('user'));
 if(user){
@@ -165,6 +165,7 @@ changeSign(){
   this.isLogin=!this.isLogin
 }
 modalDismiss(){
+  window.location.reload();
   this.modalCtrl.dismiss();
 }
 
