@@ -1,0 +1,28 @@
+ion-col{
+  text-align: center;
+}
+ion-label{
+  font-weight: bold;
+  text-align: center;
+}
+
+
+:host{
+  ion-button{
+
+      --background:#d38c32;
+      color: white;
+  }
+}
+ion-select{
+  width: min-content;
+}
+
+ion-row{
+  padding-top: 20px;
+}
+ion-item{
+  --border-width: 0;
+  --inner-border-width: 0;
+
+}

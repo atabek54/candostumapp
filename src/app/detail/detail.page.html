@@ -1,0 +1,54 @@
+
+<ion-content>
+<div style="height: 275px;border: 1px solid;">
+  <ion-badge style="position: absolute;left: 250px;
+  top: 25px;background:#5c626d ;"  mode="ios">{{ilan.ilan_turu}}</ion-badge>
+  <ion-icon (click)="back()" size="large" style="left: 25px;top:25px;position: absolute;color: white;" name="arrow-back-outline"></ion-icon>
+  <img style="object-fit: cover;" src="{{ilan.resim_url}}" />
+</div>
+
+<div style="position: absolute;top: 250px;background: white;width: 100%;border-top-left-radius: 25px;border-top-right-radius: 25px;height: 100%;">
+  <ion-row>
+    <ion-col size="9"><ion-label style="left: 19px;top:19px;position: absolute;font-weight: bold;"><ion-icon size="middle" slot="start" name="location"></ion-icon> {{ilan.konum}}</ion-label>
+    </ion-col>
+
+    <ion-col size="3"> <p style="position: absolute;top: 8px;font-size: 11px;">{{ilan.ilan_tarihi}}</p>
+    </ion-col>
+  </ion-row>
+<br><br><br>
+  <ion-row>
+    <ion-col size="4"><ion-chip >
+      <p color="dark">{{ilan.kategori}}</p>
+    </ion-chip></ion-col>
+    <ion-col size="4">
+      <ion-chip >
+        <p color="dark">{{ilan.tur}}</p>
+      </ion-chip>
+    </ion-col>
+    <ion-col size="4">
+      <ion-chip >
+        <p color="dark">{{ilan.yas}}</p>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+
+
+<h5 class="ion-padding">
+  {{ilan.aciklama}}
+</h5>
+
+<ion-button  expand="block"  shape="round">
+  <ion-icon (click)="callNumber()" slot="start" name="call"></ion-icon>Ara
+</ion-button>
+<br><br>
+<h6 class="ion-padding">
+  *Lütfen güvenirliliğinden emin olmadığınız ilanlar için  nakil ücreti vb. masraflar adı altında  talep edilen  ücretleri göndermeyiniz. Gerekirse nakil işlemini kendiniz
+ayarlamanızı veya nakil tamamlandıktan sonra ödeme yapmanızı tavsite ederiz.
+</h6>
+</div>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hesabınızı Doğrulayın</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="ion-padding">
+
+      <h6>E-postanınız kontrol edin</h6>
+      <br><br>
+
+<ion-input [(ngModel)]="code"  type="number" placeholder="Doğrulam kodu"></ion-input>
+
+<br><br>
+<ion-button (click)="verifyCode()"   shape="round">
+  Tamam
+</ion-button>
+<br>
+  <p (click)="sendVerificationCode()">Yeniden Gönder</p>
+  <br>
+ <p style="color: red;font-weight: initial;" (click)="signOut()">Çıkış yap</p>
+  </ion-list>
+
+</ion-content>

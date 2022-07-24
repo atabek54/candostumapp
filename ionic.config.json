@@ -1,0 +1,7 @@
+{
+  "name": "CanDostum",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

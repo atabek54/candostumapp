@@ -1,0 +1,101 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button color="dark" (click)="closeModal()">
+           Vazgeç
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Filtrele</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>Kategori</ion-label>
+        <ion-item>
+
+        <ion-select [(ngModel)]="kategori" (ngModelChange)="turGetir()" placeholder="Seç">
+          <ion-select-option *ngFor="let item of kategoriler"  value="{{item.kategori}}">{{item.kategori}}</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-label>Tür</ion-label>
+      <ion-item>
+
+      <ion-select [(ngModel)]="tur" placeholder="Seç">
+        <ion-select-option *ngFor="let item of turler" value="{{item.tur}}">{{item.tur}}</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+  </ion-col>
+    </ion-row>
+<br>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>Yaş</ion-label>
+        <ion-item>
+
+        <ion-select [(ngModel)]="yas" placeholder="Seç">
+          <ion-select-option value="0-1 yaşında">0-1 yaşında</ion-select-option>
+
+          <ion-select-option value="1 yaşında">1 yaşında</ion-select-option>
+          <ion-select-option value="2 yaşında">2 yaşında</ion-select-option>
+          <ion-select-option value="3 yaşında">3 yaşında</ion-select-option>
+          <ion-select-option value="4 yaşında">4 yaşında</ion-select-option>
+          <ion-select-option value="4 yaşından büyük"> 4 yaşından büyük</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-label>Konum</ion-label>
+      <ion-item>
+
+      <ion-select [(ngModel)]="konum" placeholder="Seç">
+        <ion-select-option *ngFor="let item of iller" value="{{item.il}}">{{item.il}}</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+  </ion-col>
+    </ion-row>
+
+    <br>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>Cinsiyet</ion-label>
+        <ion-item>
+
+        <ion-select [(ngModel)]="cinsiyet" placeholder="Seç">
+          <ion-select-option value="Erkek">Erkek</ion-select-option>
+          <ion-select-option value="Dişi">Dişi</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-label>İlan Türü</ion-label>
+      <ion-item>
+
+      <ion-select [(ngModel)]="ilanTuru" placeholder="Seç">
+        <ion-select-option value="sahiplendirme">Sahiplendirme</ion-select-option>
+        <ion-select-option value="Kayıp Aranan">Kayıp Aranan</ion-select-option>
+        <ion-select-option value="Kayıp Bulunan">Kayıp Bulunan</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-button (click)="openFilterModal()"  expand="block"  shape="round">
+    Uygula
+  </ion-button>
+<br><br>
+
+  <p (click)="temizle()" style="color: blue;text-align: center;">Temizle</p>
+</ion-content>

@@ -1,0 +1,24 @@
+ion-col{
+  text-align: center;
+}
+ion-label{
+
+  color: #d38c32;
+}
+ion-toolbar{
+  text-align: center;
+}
+
+ion-input{
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 20px;
+
+}
+:host{
+  ion-button{
+
+      --background:#d38c32;
+  }
+}

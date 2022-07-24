@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button color="dark" (click)="closeModal()">
+           Geri
+        </ion-button>
+    </ion-buttons>
+    <ion-title>{{ilan=='Yakınındaki İlanlar'?'Yakınındaki İlanlar':ilan=='Popüler İlanlar'?'Popüler İlanlar':'Aradığın İlanlar'}}</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed >
+    <ion-row >
+      <ion-col *ngFor="let item of filterAdverts" size="6">
+        <div (click)="openDetayModal(item.ilanUid)"
+          style="
+            border-bottom: 1px solid rgb(240 240 240);;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+
+          "
+        >
+          <img
+            style="
+              border-top-left-radius: 11px;
+              border-top-right-radius: 11px;
+              height: 130px;
+            "
+            src="{{item.resim_url}}"
+          />
+
+          <ion-row>
+            <ion-col size="9"
+              ><p>{{item.tur}}</p>
+              <br />
+              <p>
+                <ion-icon slot="start" name="location-outline"></ion-icon>
+                {{item.konum}}
+              </p></ion-col
+            >
+            <ion-col size="3"
+              ><ion-icon style="color: {{item.cinsiyet=='Erkek'?'#7187ff':'#ffa3b3'}};"
+
+                size="large"
+                [name]="item.cinsiyet=='Erkek'?'male-outline':'female-outline'  "
+              ></ion-icon
+            ></ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

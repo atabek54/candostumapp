@@ -1,0 +1,44 @@
+ion-content{
+  --background:url('../../assets/images/login2.jpg') no-repeat center center / cover;
+  text-align: center;
+
+}
+ion-label{
+  font-family: Amatica SC;
+  font-size: 21px;
+}
+:host{
+ion-input{
+  border: 1px solid rgb(255 255 255);
+  margin-top: 10px;
+
+  --padding-bottom: 17px;
+    border-radius: 8px;
+
+  text-align: center;
+
+}}
+ion-note{
+  font-size: 11px;
+  color: red;
+}
+ion-item{
+  --background:transparent;
+}
+
+ion-card{
+  margin: 0%;
+  border-radius: 0%;
+  border-top-right-radius:39px ;
+  border-top-left-radius:39px ;
+}
+
+:host{
+  ion-button{
+      width : 150px;
+      display: inline-grid;
+      --background:#d38c32;
+  }
+}
+
+

@@ -1,0 +1,57 @@
+ion-toolbar{
+  --background:transparent;
+  text-align: center;
+}
+ion-card-content{
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+ion-slides{
+  padding-top: 0%;
+}
+ion-slide{
+  --width:198px;
+}
+
+div{
+  border-bottom: 1px solid rgb(240 240 240);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+p{
+  position: absolute;
+  left: 3px;
+  margin: 0px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ion-label{
+  font-size: small;
+}
+ion-title{
+  font-size: initial;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  border: 1px solid #e2e2e2;
+  transition: 0.1s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+padding: 1px;
+}
+:host{
+  ion-slide{
+      --width : 150px;
+
+  }
+}

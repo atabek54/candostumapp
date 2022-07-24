@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button color="dark" (click)="closeModal()">
+           Vazgeç
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Bilgileri güncelle</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-input [(ngModel)]="ad_soyad" type="text" placeholder="{{user.ad_soyad}}"></ion-input>
+
+<ion-input [(ngModel)]="telefon" type="text" placeholder="{{user.telefon}}"></ion-input>
+
+
+<ion-item>
+  <ion-label>Konum</ion-label>
+  <ion-select  [(ngModel)]="konum" value="{{user.konum}}" placeholder="{{user.konum}}">
+    <ion-select-option *ngFor="let item of iller" value="{{item.il}}">{{item.il}}</ion-select-option>
+
+  </ion-select>
+</ion-item>
+<br>
+<ion-button (click)="guncelle()" [disabled]="!konum||!ad_soyad||!telefon" expand="block" fill="clear" shape="round">
+  Güncelle
+</ion-button>
+
+
+</ion-content>

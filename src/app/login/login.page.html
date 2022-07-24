@@ -1,0 +1,89 @@
+<ion-content>
+
+  <div  >
+
+
+
+<!-- <br *ngIf="isLogin==true"><br *ngIf="isLogin==true"><br *ngIf="isLogin==true"> -->
+<form (ngSubmit)="sign()" [formGroup]="credentials1" style="padding-top: 108px;">
+  <ion-item lines="none">
+
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input type="email"formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty||email.touched)&&email.errors">Geçersiz E-mail</ion-note>
+
+
+
+  </ion-item>
+
+
+  <ion-item lines="none" >
+    <ion-label position="stacked">Şifre</ion-label>
+    <ion-input type="password"formControlName="sifre"></ion-input>
+
+    <ion-note slot="error" *ngIf="(sifre.dirty||sifre.touched)&&sifre.errors">Yetersiz Karakter</ion-note>
+  </ion-item>
+</form>
+
+<form [formGroup]="credentials2">
+  <ion-item lines="none" *ngIf="isLogin==false">
+
+    <ion-label position="stacked">Ad Soyad</ion-label>
+    <ion-input type="text"formControlName="ad_soyad"></ion-input>
+
+    <ion-note slot="error" *ngIf="(ad_soyad.dirty||ad_soyad.touched)&&ad_soyad.errors">Yetersiz Karakter</ion-note>
+  </ion-item>
+
+  <ion-item lines="none" *ngIf="isLogin==false">
+    <ion-label position="stacked">Telefon</ion-label>
+    <ion-input type="text"formControlName="telefon" placeholder="05** *** ** **"></ion-input>
+
+    <ion-note slot="error" *ngIf="(telefon.dirty||telefon.touched)&&telefon.errors">Yetersiz Karakter</ion-note>
+  </ion-item>
+</form>
+<ion-item lines="none" *ngIf="isLogin==false" >
+<ion-label style="width: 50px;
+display: inherit;"><ion-icon slot="start" name="location"></ion-icon> Konum</ion-label>
+  <ion-select [(ngModel)]="konum"   placeholder="Seç">
+    <ion-select-option *ngFor="let il of iller" value="{{il.il}}">{{il.il}}</ion-select-option>
+
+  </ion-select>
+</ion-item>
+<br><br>
+<ion-button [disabled]="isLogin==true?!credentials1.valid:(!credentials2.valid||!konum)" (click)="sign()" expand="block"  shape="round">
+  {{isLogin==true?'Giriş yap':'Kaydol'}}
+</ion-button>
+<br>
+<p (click)="changeSign()">{{isLogin==true?'Hesabın Yok mu ? Kaydol':'Hesabın var mı ? Giriş yap'}} </p>
+<br>
+<p id="sifremi_unuttum" *ngIf="isLogin==true">Şifremi unuttum</p>
+<br><br><br>
+
+  </div>
+</ion-content>
+
+
+<ion-modal trigger="sifremi_unuttum">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons (click)="modalDismiss()" slot="start">
+          <ion-button >Vazgeç</ion-button>
+        </ion-buttons>
+        <ion-title>Şifremi unuttum</ion-title>
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content style="--background: white;--padding-top: 48px;" class="ion-padding">
+<br><br><br><br><br><br><br><br>
+        <ion-input [(ngModel)]="eposta" style="border: 1px solid rgb(146, 144, 144);border-radius: 20px;" type="email" placeholder="Eposta"></ion-input>
+<br><br>
+
+
+
+      <ion-button style="--background: #d38c32;" (click)="sendNewPasswordEmail()"   shape="round">
+       Şifreyi sıfırla
+      </ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

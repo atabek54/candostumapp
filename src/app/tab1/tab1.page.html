@@ -1,0 +1,88 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="false" class="ion-no-border">
+    <ion-toolbar style="text-align: center;">
+      <ion-buttons slot="end">
+        <ion-icon
+          (click)="openFilterModal('s')"
+          slot="start"
+          name="filter"
+        ></ion-icon>
+      </ion-buttons>
+      <ion-title>Can Dostum</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div style="border-bottom: 1px solid #f4f4f4">
+    <ion-list-header>
+      <ion-label>Popüler İlanlar</ion-label>
+      <ion-button (click)="openAdvertModal('Popüler İlanlar')">Tümünü gör</ion-button>
+    </ion-list-header>
+
+    <ion-slides mode="ios" pager="ios" scrollbar="ios" style="height: 160px;">
+      <ion-slide style="198px" *ngFor="let item of populerIlanlar">
+        <ion-card  [routerLink]="['/detail',item.ilanUid]" routerLinkActive="router-link-active"  style="box-shadow: 0 12px 9px 0 rgb(0 0 0 / 20%);width: 60%;height: 150px;">
+          <img style="width: 100%;object-fit: fill;"
+            src="{{item.resim_url}}"
+          />
+
+        </ion-card>
+
+      </ion-slide>
+
+
+    </ion-slides>
+  </div>
+
+
+
+  <!--Grid-->
+  <ion-list-header>
+    <ion-label>Tüm İlanlar</ion-label>
+  </ion-list-header>
+  <br />
+  <ion-grid fixed >
+    <ion-row >
+      <ion-col *ngFor="let item of tumIlanlar" size="6">
+        <div [routerLink]="['/detail',item.ilanUid]" routerLinkActive="router-link-active"
+          style="
+            border-bottom: 1px solid rgb(240 240 240);;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+
+          "
+        >
+          <img
+            style="
+              border-top-left-radius: 11px;
+              border-top-right-radius: 11px;
+              height: 200px;
+              object-fit: cover;
+            "
+            src="{{item.resim_url}}"
+          />
+
+          <ion-row>
+            <ion-col size="9"
+              ><p>{{item.tur}}</p>
+              <br />
+              <p>
+                <ion-icon slot="start" name="location-outline"></ion-icon>
+                {{item.konum}}
+              </p></ion-col
+            >
+            <ion-col size="3"
+              ><ion-icon style="color: {{item.cinsiyet=='Erkek'?'#7187ff':'#ffa3b3'}};"
+
+                size="large"
+                [name]="item.cinsiyet=='Erkek'?'male-outline':'female-outline'  "
+              ></ion-icon
+            ></ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

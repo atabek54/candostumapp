@@ -1,0 +1,32 @@
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-header [translucent]="false" class="ion-no-border">
+    <ion-toolbar style="text-align: center;">
+
+
+  <ion-title>Profil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <br><br><br><br>
+  <div >
+    <h3><ion-icon slot="start" name="person"></ion-icon>  {{user.ad_soyad}}</h3>
+    <h5><ion-icon slot="start" name="call"></ion-icon> {{user.telefon}}</h5>
+    <h6><ion-icon slot="start" name="location"></ion-icon> {{user.konum}}</h6>
+  </div>
+<br><br>
+
+ <ion-item>
+  <ion-label (click)="openUserModal()">Hesap Bilgileri</ion-label>
+ </ion-item>
+ <ion-item (click)="openilanlarimModal()">
+  <ion-label>İlanlarım</ion-label>
+ </ion-item>
+
+
+ <ion-item>
+  <ion-label (click)="signOut()" style="color: red;"> Çıkış yap </ion-label>
+ </ion-item>
+</ion-content>

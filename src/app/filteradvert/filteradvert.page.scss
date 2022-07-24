@@ -1,0 +1,28 @@
+ion-toolbar{
+  --background:transparent;
+}
+ion-card-content{
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+ion-slides{
+  padding-top: 0%;
+}
+ion-row{
+  margin-top: 10px;
+}
+
+
+p{
+  position: absolute;
+  left: 3px;
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ion-label{
+  font-size: small;
+}
+
