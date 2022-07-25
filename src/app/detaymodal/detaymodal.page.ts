@@ -26,8 +26,10 @@ public ilan:any='';
     });
   }
    callNumber(){
-    this.call.callNumber(this.telefon,true);
-    }
+    this.call.callNumber("18001010101", true)
+    .then(res => console.log('Launched dialer!', res))
+    .catch(err => console.log('Error launching dialer', err));    }
+
 
    detayGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.id).subscribe(data=>{
