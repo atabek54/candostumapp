@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController,  } from '@ionic/angular';
 
 @Component({
   selector: 'app-detaymodal',
@@ -26,7 +25,7 @@ public ilan:any='';
     });
   }
    callNumber(){
-    this.call.callNumber("18001010101", true)
+    this.call.callNumber(this.telefon, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));    }
 
