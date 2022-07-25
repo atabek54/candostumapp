@@ -26,7 +26,7 @@ export class Tab3Page implements OnInit {
 
   ) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
+
     if (!this.user) {
       this.navCtrl.navigateRoot('login');
     }

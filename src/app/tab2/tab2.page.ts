@@ -8,8 +8,7 @@ import {
   Storage,
   uploadString,
 } from '@angular/fire/storage';
-import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -38,12 +37,18 @@ export class Tab2Page implements OnInit {
     private storage: Storage,
  private loadingCtrl:LoadingController
   ) {
+
     this.user = JSON.parse(localStorage.getItem('user'));
+
+    if(!this.user){
+      this.navCtrl.navigateRoot('login');
+    }
     this.kategoriGetir();
     this.illeriGetir();
   }
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+
+
   }
   turleriGetir() {
     this.http
@@ -53,14 +58,12 @@ export class Tab2Page implements OnInit {
       )
       .subscribe((data) => {
         this.turler = data;
-        console.log(this.kategori);
-        console.log(this.turler);
+
       });
   }
 
   ilanUidUret() {
     this.ilanUid = Math.floor(Math.random() * (9999999 - 100000) + 100000);
-    console.log(this.ilanUid);
   }
 
  async ekle() {
@@ -92,17 +95,24 @@ export class Tab2Page implements OnInit {
       )
       .subscribe((data) => {
 
-        console.log(data);
-        this.navCtrl.navigateRoot('tabs/tab1');
+
+
       });
+
   }
+
   async ilanEkle() {
+    const loading=await this.loadingCtrl.create();
+    loading.present();
 
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
     this.ilan_tarihi = today.toLocaleDateString();
+    this.user = JSON.parse(localStorage.getItem('user'));
+    let formattedDate = (moment(today)).format('DD-MM-YYYY');
+    this.ilan_tarihi=formattedDate;
     if (this.image) {
-      console.log(this.image);
+
       this.ilanUidUret();
       const path = `${this.ilanUid}`;
       const storageRef = ref(this.storage, path);
@@ -110,10 +120,9 @@ export class Tab2Page implements OnInit {
         await uploadString(storageRef, this.image.base64String, 'base64');
 
         this.imageUrl = await getDownloadURL(storageRef);
-        console.log(this.imageUrl);
+
         if (this.imageUrl) {
-          const loading=await this.loadingCtrl.create();
-          loading.present();
+
           let sayac = 1;
 
           for (let index = 0; index < sayac; index++) {
@@ -126,7 +135,16 @@ export class Tab2Page implements OnInit {
                 if (data == false) {
                   this.ekle();
 loading.dismiss();
-                  // this.navCtrl.navigateRoot('tabs/tab1');
+this.ilanTuru=undefined;
+this.kategori=undefined;
+this.tur=undefined;
+this.cinsiyet=undefined;
+this.yas=undefined;
+this.konum=undefined;
+this.image=undefined;
+this.aciklama=undefined;
+
+                   this.navCtrl.navigateRoot('tabs/tab1');
                 } else if (data != false) {
                   this.ilanUidUret();
                   this.http
@@ -163,7 +181,7 @@ loading.dismiss();
       .get('https://webservis.online/candostum.php?servis_adi=illeri_getir')
       .subscribe((data) => {
         this.iller = data;
-        console.log(this.iller);
+
       });
   }
 
@@ -174,6 +192,6 @@ loading.dismiss();
       resultType: CameraResultType.Base64,
       source: CameraSource.Prompt,
     });
-    console.log(this.image);
+
   }
 }

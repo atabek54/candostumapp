@@ -22,7 +22,7 @@ public ilan:any='';
    kullaniciTelefonGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=kullanici_numara_getir&user_id='+this.user.id).subscribe(data=>{
   this.telefon=data;
-  console.log(this.telefon);
+
     });
   }
    callNumber(){
@@ -32,22 +32,18 @@ public ilan:any='';
    detayGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.id).subscribe(data=>{
       this.ilan=data;
-     // console.log(this.ilan);
+
     })
    }
   ngOnInit() {
-console.log(this.id);
+
 this.detayGetir();
-this.gorulduArtir();
+
 
  }
 back(){
 this.modalCtrl.dismiss();
 }
-gorulduArtir(){
-  this.http.get('https://webservis.online/candostum.php?servis_adi=gorulme_artir&ilanUid='+this.id).subscribe(data=>{
 
-  });
-}
 
 }

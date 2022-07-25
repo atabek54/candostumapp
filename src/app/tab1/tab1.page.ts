@@ -13,10 +13,11 @@ import { FilteradvertPage } from '../filteradvert/filteradvert.page';
 })
 export class Tab1Page implements OnInit {
 
-  public populerIlanlar:any;
+  public enYeniIlanlar:any;
   public tumIlanlar:any;
   public yakinIlanlar:any;
  public user:any;
+
   constructor(
 
 
@@ -30,18 +31,21 @@ export class Tab1Page implements OnInit {
     if(!this.user){
       this.navCtrl.navigateRoot('login');
     }
-    console.log(this.user);
-    this.populerIlanlariGetir();
+    this.yeniIlanlariGetir();
     this.tumIlanlariGetir();
-this.yakindakiIlanlariGetir();
 
   }
+  doRefresh(event) {
 
+
+    setTimeout(() => {
+      this.yeniIlanlariGetir();
+    this.tumIlanlariGetir();
+      event.target.complete();
+    }, 2000);
+  }
 
   ngOnInit() {
-
-
-
   }
   tumIlanlariGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=tum_ilanlari_getir').subscribe(data=>{
@@ -49,22 +53,16 @@ this.yakindakiIlanlariGetir();
     })
   }
 
-  populerIlanlariGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=populer_ilanlari_getir').subscribe(data=>{
-this.populerIlanlar=data;
-this.populerIlanlar=this.populerIlanlar.slice(0,15);
+  yeniIlanlariGetir(){
+    this.http.get('https://webservis.online/candostum.php?servis_adi=en_yeni_ilanlari_getir').subscribe(data=>{
+this.enYeniIlanlar=data;
+this.enYeniIlanlar=this.enYeniIlanlar.slice(0,15);
 
 
     })
   }
 
-  yakindakiIlanlariGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=yakindaki_ilanlari_getir&konum='+this.user.konum).subscribe(data=>{
-      this.yakinIlanlar=data;
-      this.yakinIlanlar=this.yakinIlanlar.slice(0,20)
-      console.log(this.yakinIlanlar);
-    })
-  }
+
 
 
 

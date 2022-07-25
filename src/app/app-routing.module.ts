@@ -40,10 +40,7 @@ const routes: Routes = [
     path: 'detaymodal',
     loadChildren: () => import('./detaymodal/detaymodal.module').then( m => m.DetaymodalPageModule)
   },
-  {
-    path: 'image-modal',
-    loadChildren: () => import('./image-modal/image-modal.module').then( m => m.ImageModalPageModule)
-  },
+
   {
     path: 'ilanlarim',
     loadChildren: () => import('./ilanlarim/ilanlarim.module').then( m => m.IlanlarimPageModule)

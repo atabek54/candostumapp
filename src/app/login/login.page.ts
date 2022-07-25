@@ -27,7 +27,6 @@ export class LoginPage implements OnInit {
     ) {
 http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
   this.iller=data;
-  console.log(this.iller);
 })
      }
   get email() {
@@ -101,10 +100,10 @@ if(user){
             this.presentToast('Giriş başarılı.','success');
             loading.dismiss();
             localStorage.setItem('user', JSON.stringify(user));
-            console.log(JSON.parse(localStorage.getItem('user')));
+
 
             const userVerified = JSON.parse(localStorage.getItem('user'));
-            console.log(userVerified.verification);
+
             if(userVerified.verification=='false'){
               this.navCtrl.navigateRoot('verification');
 
@@ -133,7 +132,7 @@ if(user){
             '&konum='+this.konum,
         )
         .subscribe(async(data) => {
-          console.log(data);
+
           const loading = await this.loadingCtrl.create();
           loading.present();
           const user = data;
@@ -141,10 +140,10 @@ if(user){
             this.presentToast('Kayıt başarılı.','success');
             loading.dismiss();
             localStorage.setItem('user', JSON.stringify(user));
-            console.log(JSON.parse(localStorage.getItem('user')));
+
 
             const userVerified = JSON.parse(localStorage.getItem('user'));
-            console.log(userVerified.verification);
+
             if(userVerified.verification=='false'){
               this.navCtrl.navigateRoot('verification');
 
@@ -163,6 +162,7 @@ if(user){
   }
 changeSign(){
   this.isLogin=!this.isLogin
+
 }
 modalDismiss(){
   this.modalCtrl.dismiss();
@@ -170,7 +170,6 @@ modalDismiss(){
 
 sendNewPasswordEmail(){
   var randomstring = Math.random().toString(36).slice(-8);
-  console.log(randomstring);
   this.http.get('https://webservis.online/candostum.php?servis_adi=kullanici_getir&email='+this.eposta).subscribe(data=>{
     if(data){
       this.http.get('https://webservis.online/candostum.php?servis_adi=sifre_sifirla&email='+this.eposta+'&password='+randomstring).subscribe(data=>{

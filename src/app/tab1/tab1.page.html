@@ -1,6 +1,10 @@
 
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-header [translucent]="false" class="ion-no-border">
     <ion-toolbar style="text-align: center;">
       <ion-buttons slot="end">
@@ -15,14 +19,18 @@
   </ion-header>
   <div style="border-bottom: 1px solid #f4f4f4">
     <ion-list-header>
-      <ion-label>Popüler İlanlar</ion-label>
-      <ion-button (click)="openAdvertModal('Popüler İlanlar')">Tümünü gör</ion-button>
+      <ion-label>En Yeni İlanlar</ion-label>
+      <ion-button (click)="openAdvertModal('En Yeni İlanlar')">Tümünü gör</ion-button>
     </ion-list-header>
 
-    <ion-slides mode="ios" pager="ios" scrollbar="ios" style="height: 160px;">
-      <ion-slide style="198px" *ngFor="let item of populerIlanlar">
-        <ion-card  [routerLink]="['/detail',item.ilanUid]" routerLinkActive="router-link-active"  style="box-shadow: 0 12px 9px 0 rgb(0 0 0 / 20%);width: 60%;height: 150px;">
-          <img style="width: 100%;object-fit: fill;"
+    <ion-slides mode="ios" pager="ios" scrollbar="ios" style="height: 190px;">
+      <ion-slide style="198px" *ngFor="let item of enYeniIlanlar">
+        <ion-card  [routerLink]="['/detail',item.ilanUid]" routerLinkActive="router-link-active"  style="box-shadow: 0 12px 9px 0 rgb(0 0 0 / 20%);
+        width: 85%;
+        height: 184px;">
+          <img style="width: 100%;
+          object-fit: fill;
+          height: 184px;"
             src="{{item.resim_url}}"
           />
 
@@ -58,6 +66,7 @@
               border-top-right-radius: 11px;
               height: 200px;
               object-fit: cover;
+              width: 173px;
             "
             src="{{item.resim_url}}"
           />

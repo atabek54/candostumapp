@@ -2,27 +2,23 @@ ion-col{
   text-align: center;
 }
 ion-label{
-  font-weight: bold;
+
+  color: #d38c32;
+}
+ion-toolbar{
   text-align: center;
 }
 
+ion-input{
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 20px;
 
+}
 :host{
   ion-button{
 
       --background:#d38c32;
-      color: white;
   }
-}
-ion-select{
-  width: min-content;
-}
-
-ion-row{
-  padding-top: 20px;
-}
-ion-item{
-  --border-width: 0;
-  --inner-border-width: 0;
-
 }

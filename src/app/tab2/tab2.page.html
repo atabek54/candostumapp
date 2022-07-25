@@ -6,6 +6,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+
   <ion-radio-group [(ngModel)]="ilanTuru" value="sahiplendirme">
     <ion-list-header>
       <ion-label>İlan Türü</ion-label>
@@ -114,7 +115,7 @@
 
 
 <br>
-  <ion-button (click)="ilanEkle()"  expand="block"  shape="round">
+  <ion-button [disabled]="!ilanTuru||!kategori||!tur||!cinsiyet||!yas||!konum||!image||!aciklama" (click)="ilanEkle()"  expand="block"  shape="round">
     Yayınla
   </ion-button>
 </ion-content>

@@ -3,7 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
 import { DetaymodalPage } from '../detaymodal/detaymodal.page';
-
+import {
+  getDownloadURL,
+  ref,
+  Storage,
+  uploadString,
+} from '@angular/fire/storage';
+import { deleteObject } from '@firebase/storage';
 @Component({
   selector: 'app-ilanlarim',
   templateUrl: './ilanlarim.page.html',
@@ -12,7 +18,8 @@ import { DetaymodalPage } from '../detaymodal/detaymodal.page';
 export class IlanlarimPage implements OnInit {
 public user:any;
 public kullaniciIlanlari:any;
-  constructor(private http:HttpClient,private modalCtrl:ModalController,private alertCtrl: AlertController,private navCtrl:NavController, private loadingCtrl:LoadingController
+  constructor(private http:HttpClient,private modalCtrl:ModalController,private alertCtrl: AlertController,private navCtrl:NavController, private loadingCtrl:LoadingController,
+    private storage:Storage
     ) {
     this.user = JSON.parse(localStorage.getItem('user'));
     if(this.user)
@@ -36,7 +43,7 @@ async  kullaniciIlanlariGetir() {
 
         this.kullaniciIlanlari = data;
         loading.dismiss();
-        console.log(this.kullaniciIlanlari)
+
       });
   }
   dismissModal(){
@@ -60,10 +67,15 @@ async  kullaniciIlanlariGetir() {
               )
               .subscribe((data) => {
 
-                this.modalCtrl.dismiss();
-                this.navCtrl.navigateRoot('tabs/tab1');
+
               });
+              this.modalCtrl.dismiss();
+
+              const path = `${ilanUid}`;
+      const storageRef = ref(this.storage, path);
+      deleteObject(storageRef);
               loading.dismiss();
+
 
           },
         },

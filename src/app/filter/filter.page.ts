@@ -38,10 +38,11 @@ export class FilterPage implements OnInit {
   illeriGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
   this.iller=data;
-  console.log(this.iller);
+
 })
   }
   closeModal(){
+
     this.modalCtrl.dismiss();
   }
 

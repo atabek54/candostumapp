@@ -24,27 +24,25 @@ public user:any='';
 kullaniciTelefonGetir(){
   this.http.get('https://webservis.online/candostum.php?servis_adi=kullanici_numara_getir&user_id='+this.user.id).subscribe(data=>{
 this.telefon=data;
-console.log(this.telefon);
+
   });
 }
    detayGetir(){
     this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.ilanUid).subscribe(data=>{
       this.ilan=data;
-      console.log(this.ilan);
+
     })
    }
   ngOnInit() {
     this.detayGetir();
     this.kullaniciTelefonGetir();
-    this.gorulduArtir();
+
 
  }
 back(){
 this.navCtrl.back()
 }
-gorulduArtir(){
-  this.http.get('https://webservis.online/candostum.php?servis_adi=gorulme_artir&ilanUid='+this.ilanUid).subscribe(data=>{});
-}
+
 callNumber(){
 this.call.callNumber(this.telefon,true);
 }

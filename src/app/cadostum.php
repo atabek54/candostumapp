@@ -203,12 +203,11 @@ else if($servis_adi=='kullanici_numara_getir'){
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
   print json_encode($row);
 }
-else if($servis_adi=='gorulme_artir'){
-  $ilanUid = $_GET['ilanUid'];
-
-
-  $stmt = $pdo->prepare("UPDATE `u113559345_vz3vz`.`ilanlar` SET `gorulme` = (`gorulme`+1) WHERE `ilanUid` = $ilanUid ");
+else if($servis_adi=='en_yeni_ilanlari_getir'){
+  $stmt = $pdo->prepare("SELECT * FROM `ilanlar` ORDER BY id DESC");
   $stmt->execute();
+  $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  print json_encode($row);
 }
 
 else if($servis_adi=='ilan_detayi_getir'){

@@ -28,13 +28,13 @@ export class FilteradvertPage implements OnInit {
 
   ngOnInit() {
 
-    if(this.ilan!='Yakınındaki İlanlar'&&this.ilan!='Popüler İlanlar'){
+    if(this.ilan!='Yakınındaki İlanlar'&&this.ilan!='En Yeni İlanlar'){
       this.filtrele();
     }
     else if (this.ilan=='Yakınındaki İlanlar'){
       this.yakinIlanlariGetir();
     }
-    else if (this.ilan=='Popüler İlanlar'){
+    else if (this.ilan=='En Yeni İlanlar'){
       this.popülerIlanlariGetir();
     }
 
@@ -63,7 +63,7 @@ yakinIlanlariGetir(){
   });
 }
 popülerIlanlariGetir(){
-  this.http.get('https://webservis.online/candostum.php?servis_adi=populer_ilanlari_getir').subscribe(data=>{
+  this.http.get('https://webservis.online/candostum.php?servis_adi=en_yeni_ilanlari_getir').subscribe(data=>{
     this.filterAdverts=data;
   });
 }

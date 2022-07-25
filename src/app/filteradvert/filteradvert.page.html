@@ -6,7 +6,7 @@
            Geri
         </ion-button>
     </ion-buttons>
-    <ion-title>{{ilan=='Yakınındaki İlanlar'?'Yakınındaki İlanlar':ilan=='Popüler İlanlar'?'Popüler İlanlar':'Aradığın İlanlar'}}</ion-title>
+    <ion-title>{{ilan=='Yakınındaki İlanlar'?'Yakınındaki İlanlar':ilan=='En Yeni İlanlar'?'En Yeni İlanlar':'Aradığın İlanlar'}}</ion-title>
 </ion-toolbar>
 </ion-header>
 
@@ -26,7 +26,9 @@
             style="
               border-top-left-radius: 11px;
               border-top-right-radius: 11px;
-              height: 130px;
+              height: 200px;
+              width: 173px;
+              object-fit: cover;
             "
             src="{{item.resim_url}}"
           />

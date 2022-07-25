@@ -17,13 +17,13 @@ public konum:string;
   constructor(private activatedRoute: ActivatedRoute,private modalCtrl:ModalController,private http:HttpClient,private navCtrl:NavController) {
     http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
       this.iller=data;
-      console.log(this.iller);
+
     })
    }
 
   ngOnInit() {
 
-    console.log(this.user);
+
 
   }
 closeModal(){

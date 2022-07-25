@@ -22,7 +22,6 @@ export class VerificationPage implements OnInit {
     this.verificationCode = Math.floor(
       Math.random() * (999999 - 100000) + 100000
     );
-    console.log(this.verificationCode);
     this.presentToast('Doğrulama kodu gönderildi', 'success');
     this.http
       .get(
