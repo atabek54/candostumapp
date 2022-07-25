@@ -28,6 +28,7 @@
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.3",
     "@capacitor/status-bar": "1.0.8",
+    "@ionic-native/call-number": "^5.22.0-beta-1",
     "@ionic/angular": "^6.1.9",
     "@ionic/pwa-elements": "^3.1.1",
     "call-number": "^1.0.1",
@@ -71,5 +72,10 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.7.3"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "mx.ferreyra.callnumber": {}
+    }
+  }
 }
