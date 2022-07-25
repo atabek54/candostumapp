@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
-import {  NavController } from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { LoadingController, ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',
@@ -15,7 +15,7 @@ public ilan:any='';
 public telefon:any;
 public user:any='';
 
-  constructor(private http:HttpClient,private activatedRoute: ActivatedRoute,private navCtrl:NavController,private call:CallNumber) {
+  constructor(private http:HttpClient,private activatedRoute: ActivatedRoute,private navCtrl:NavController,private call:CallNumber,private loading:LoadingController) {
     this.ilanUid = this.activatedRoute.snapshot.paramMap.get('id');
     this.user=JSON.parse(localStorage.getItem('user'));
 
@@ -27,12 +27,16 @@ this.telefon=data;
 
   });
 }
-   detayGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.ilanUid).subscribe(data=>{
-      this.ilan=data;
+async detayGetir(){
+  const loading=await this.loading.create();
+  loading.present();
 
-    })
-   }
+  this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.ilanUid).subscribe(data=>{
+    this.ilan=data;
+
+  });
+  loading.dismiss();
+ }
   ngOnInit() {
     this.detayGetir();
     this.kullaniciTelefonGetir();
