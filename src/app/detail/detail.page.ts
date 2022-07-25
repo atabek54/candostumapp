@@ -48,7 +48,8 @@ this.navCtrl.back()
 }
 
 callNumber(){
-  this.call.callNumber(this.telefon, true)
+  console.log(this.telefon.telefon);
+  this.call.callNumber(this.telefon.telefon, true)
   .then(res => console.log('Launched dialer!', res))
   .catch(err => console.log('Error launching dialer', err));    }
 

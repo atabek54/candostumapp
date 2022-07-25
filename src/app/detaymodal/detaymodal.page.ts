@@ -26,7 +26,7 @@ public ilan:any='';
     });
   }
    callNumber(){
-    this.call.callNumber(this.telefon, true)
+    this.call.callNumber(this.telefon.telefon, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));    }
 
@@ -44,9 +44,11 @@ public ilan:any='';
   ngOnInit() {
 
 this.detayGetir();
+this.kullaniciTelefonGetir();
 
 
  }
+
 back(){
 this.modalCtrl.dismiss();
 }
