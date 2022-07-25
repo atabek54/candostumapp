@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
-import { ModalController, NavController } from '@ionic/angular';
+import {  NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',

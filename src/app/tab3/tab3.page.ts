@@ -8,6 +8,8 @@ import {
 } from '@ionic/angular';
 import { IlanlarimPage } from '../ilanlarim/ilanlarim.page';
 import { ModalPage } from '../modal/modal.page';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+
 
 @Component({
   selector: 'app-tab3',
