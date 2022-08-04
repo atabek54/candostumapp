@@ -10,12 +10,12 @@ ion-label{
 }
 :host{
 ion-input{
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
   margin-top: 10px;
 
   --padding-bottom: 17px;
     border-radius: 8px;
-color: white;
+color: rgb(0, 0, 0);
   text-align: center;
 
 }}
@@ -43,11 +43,11 @@ ion-card{
 }
 :host{
   ion-label{
-     color: aliceblue;
+     color: rgb(0, 0, 0);
   }
 }
 p{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 ion-select{
