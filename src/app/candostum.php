@@ -110,6 +110,7 @@ else if($servis_adi=='ilan_ekle'){
   $ilan_sahibi_id = $_GET['ilan_sahibi_id'];
   $gorulme = $_GET['gorulme'];
   $resim_url = $_GET['resim_url'];
+  $telefon=$_GET['telefon'];
 
 
 
@@ -118,7 +119,7 @@ else if($servis_adi=='ilan_ekle'){
 
 
 
-    $stmt = $pdo->prepare("INSERT INTO `u113559345_vz3vz`.`ilanlar` (`ilan_turu`, `kategori`, `tur`, `konum`, `cinsiyet`, `ilan_tarihi`, `aciklama`, `yas`, `ilan_sahibi_id`, `gorulme`,`ilanUid`,`resim_url`) VALUES ('$ilan_turu', '$kategori', '$tur', ' $konum', ' $cinsiyet', '$ilan_tarihi', ' $aciklama', '$yas', $ilan_sahibi_id, $gorulme,$ilanUid,'$resim_url')");
+    $stmt = $pdo->prepare("INSERT INTO `u113559345_vz3vz`.`ilanlar` (`ilan_turu`, `kategori`, `tur`, `konum`, `cinsiyet`, `ilan_tarihi`, `aciklama`, `yas`, `ilan_sahibi_id`, `gorulme`,`ilanUid`,`resim_url`,`telefon`) VALUES ('$ilan_turu', '$kategori', '$tur', ' $konum', ' $cinsiyet', '$ilan_tarihi', ' $aciklama', '$yas', $ilan_sahibi_id, $gorulme,$ilanUid,'$resim_url','$telefon')");
     $stmt->execute();
 
     $stmt = $pdo->prepare("SELECT * FROM ilanlar where ilanUid='$ilanUid'");
@@ -288,11 +289,11 @@ if($email){
     error_reporting( E_ALL );
     $from = "candostum@webservis.online";
     $to = "$email";
-    $subject = "Dogrulama kodu";
-    $message = "$password";
+    $subject = "Yeni Sifre Talebi";
+    $message = "Sifreniz: $password";
     $headers = "From:" . $from;
     mail($to,$subject,$message, $headers);
-    echo "Dogrulama kodu gonderildi.";
+
 
 
 

@@ -3,7 +3,7 @@ ion-col{
 }
 ion-label{
 
-  color: #d38c32;
+  color: black;
 }
 ion-toolbar{
   text-align: center;
@@ -19,6 +19,9 @@ ion-input{
 :host{
   ion-button{
 
-      --background:#d38c32;
+      --background:black;
   }
+}
+ion-content{
+  text-align: center;
 }

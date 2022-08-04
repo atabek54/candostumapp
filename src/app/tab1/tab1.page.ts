@@ -28,9 +28,7 @@ export class Tab1Page implements OnInit {
 
 
     this.user = JSON.parse(localStorage.getItem('user'));
-    if(!this.user){
-      this.navCtrl.navigateRoot('login');
-    }
+
     this.yeniIlanlariGetir();
     this.tumIlanlariGetir();
 
@@ -48,6 +46,7 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
   }
   tumIlanlariGetir(){
+
     this.http.get('https://webservis.online/candostum.php?servis_adi=tum_ilanlari_getir').subscribe(data=>{
       this.tumIlanlar=data;
     })

@@ -1,20 +1,21 @@
 ion-content{
-  --background:url('../../assets/images/login2.jpg') no-repeat center center / cover;
+  --background:url('../../assets/images/login.jpg') no-repeat center center / cover;
   text-align: center;
 
 }
 ion-label{
   font-family: Amatica SC;
   font-size: 21px;
+  --color:white
 }
 :host{
 ion-input{
-  border: 1px solid rgb(145 145 145);
+  border: 1px solid rgb(255, 255, 255);
   margin-top: 10px;
 
   --padding-bottom: 17px;
     border-radius: 8px;
-
+color: white;
   text-align: center;
 
 }}
@@ -37,8 +38,18 @@ ion-card{
   ion-button{
       width : 150px;
       display: inline-grid;
-      --background:#d38c32;
+      --background:#000000;
   }
 }
+:host{
+  ion-label{
+     color: aliceblue;
+  }
+}
+p{
+  color: white;
+}
 
-
+ion-select{
+  color: white;
+}

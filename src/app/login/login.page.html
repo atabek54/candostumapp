@@ -1,10 +1,14 @@
+
+
 <ion-content>
+
 
   <div  >
 
+    <p style="    position: absolute;
+    left: 80%;
+    top: 2%;" (click)="atla()">Atla</p>
 
-
-<!-- <br *ngIf="isLogin==true"><br *ngIf="isLogin==true"><br *ngIf="isLogin==true"> -->
 <form (ngSubmit)="sign()" [formGroup]="credentials1" style="padding-top: 108px;">
   <ion-item lines="none">
 
@@ -49,14 +53,14 @@ display: inherit;"><ion-icon slot="start" name="location"></ion-icon> Konum</ion
 
   </ion-select>
 </ion-item>
-<br><br>
+<br>
 <ion-button [disabled]="isLogin==true?!credentials1.valid:(!credentials2.valid||!konum)" (click)="sign()" expand="block"  shape="round">
   {{isLogin==true?'Giriş yap':'Kaydol'}}
 </ion-button>
-<br>
+<br><br>
 <p (click)="changeSign()">{{isLogin==true?'Hesabın Yok mu ? Kaydol':'Hesabın var mı ? Giriş yap'}} </p>
 <br>
-<p id="sifremi_unuttum" style="font-weight: bold;" *ngIf="isLogin==true">Şifremi unuttum</p>
+<p id="sifremi_unuttum"  *ngIf="isLogin==true">Şifremi unuttum</p>
 
 
   </div>
@@ -70,18 +74,23 @@ display: inherit;"><ion-icon slot="start" name="location"></ion-icon> Konum</ion
         <ion-buttons (click)="modalDismiss()" slot="start">
           <ion-button >Vazgeç</ion-button>
         </ion-buttons>
-        <ion-title>Şifremi unuttum</ion-title>
+
 
       </ion-toolbar>
     </ion-header>
     <ion-content style="--background: white;--padding-top: 48px;" class="ion-padding">
+
 <br><br><br><br><br><br><br><br>
-        <ion-input [(ngModel)]="eposta" style="border: 1px solid rgb(146, 144, 144);border-radius: 20px;" type="email" placeholder="Eposta"></ion-input>
+<ion-item lines="none">
+  <ion-label position="stacked">Email</ion-label>
+  <ion-input [(ngModel)]="eposta" style="border: 1px solid rgb(146, 144, 144);border-radius: 8px;text-align: center;" type="email" ></ion-input>
+
+</ion-item>
 <br><br>
 
 
 
-      <ion-button style="--background: #d38c32;" (click)="sendNewPasswordEmail()"   shape="round">
+      <ion-button style="--background: #000000;" (click)="sendNewPasswordEmail()"   shape="round">
        Şifreyi sıfırla
       </ion-button>
     </ion-content>

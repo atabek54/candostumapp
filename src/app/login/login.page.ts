@@ -81,6 +81,10 @@ if(user){
       telefon:['',[Validators.required,Validators.minLength(11)]]
     })
   }
+
+  atla(){
+    this.navCtrl.navigateRoot('tabs/tab1');
+  }
   async sign() {
 
     if (this.isLogin == true) {

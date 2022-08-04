@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
-
+  AlertController,
   LoadingController,
   ModalController,
   NavController,
@@ -9,7 +9,6 @@ import {
 import { IlanlarimPage } from '../ilanlarim/ilanlarim.page';
 import { ModalPage } from '../modal/modal.page';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
-
 
 @Component({
   selector: 'app-tab3',
@@ -19,23 +18,26 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 export class Tab3Page implements OnInit {
   public kullaniciIlanlari: any = '';
 
-  public user: any = '';
+  public user: any = null;
   constructor(
     private modalCtrl: ModalController,
     private http: HttpClient,
     private navCtrl: NavController,
-    private loadingCtrl:LoadingController
-
+    private loadingCtrl: LoadingController,
+    private alerCtrl: AlertController
   ) {
     this.user = JSON.parse(localStorage.getItem('user'));
 
     if (!this.user) {
-      this.navCtrl.navigateRoot('login');
     }
-    this.kullaniciIlanlariGetir();
+    if (this.user != null) {
+      this.kullaniciIlanlariGetir();
+    }
   }
-  ngOnInit(): void {
-    this.kullaniciIlanlariGetir();
+  async ngOnInit() {
+    if (this.user != null) {
+      this.kullaniciIlanlariGetir();
+    }
   }
 
   kullaniciIlanlariGetir() {
@@ -62,19 +64,17 @@ export class Tab3Page implements OnInit {
       component: IlanlarimPage,
 
       breakpoints: [0, 0.5, 0.8],
-
     });
     modal.present();
   }
-
-async  signOut() {
-    const loading= await this.loadingCtrl.create();
+  girisEkraninaGotur(){
+    this.navCtrl.navigateRoot('login');
+  }
+  async signOut() {
+    const loading = await this.loadingCtrl.create();
     loading.present();
     localStorage.removeItem('user');
     loading.dismiss();
     this.navCtrl.navigateRoot('login');
-
   }
-
-
 }

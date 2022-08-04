@@ -21,12 +21,7 @@ public user:any='';
 
 
    }
-kullaniciTelefonGetir(){
-  this.http.get('https://webservis.online/candostum.php?servis_adi=kullanici_numara_getir&user_id='+this.user.id).subscribe(data=>{
-this.telefon=data;
 
-  });
-}
 async detayGetir(){
   const loading=await this.loading.create();
   loading.present();
@@ -39,7 +34,7 @@ async detayGetir(){
  }
   ngOnInit() {
     this.detayGetir();
-    this.kullaniciTelefonGetir();
+
 
 
  }
@@ -48,9 +43,8 @@ this.navCtrl.back()
 }
 
 callNumber(){
-  console.log(this.telefon.telefon);
-  this.call.callNumber(this.telefon.telefon, true)
-  .then(res => console.log('Launched dialer!', res))
-  .catch(err => console.log('Error launching dialer', err));    }
+  this.call.callNumber(this.ilan.telefon, true)
+  .then(res => {})
+  .catch(err => {});    }
 
 }

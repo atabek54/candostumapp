@@ -22,3 +22,9 @@ ion-row{
 ion-col{
   top: -10px;
 }
+:host{
+  ion-button{
+
+      --background:black;
+  }
+}

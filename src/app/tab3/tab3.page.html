@@ -1,6 +1,6 @@
 
 
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="user!=null" [fullscreen]="true">
 
   <ion-header [translucent]="false" class="ion-no-border">
     <ion-toolbar style="text-align: center;">
@@ -29,4 +29,22 @@
  <ion-item>
   <ion-label (click)="signOut()" style="color: red;"> Çıkış yap </ion-label>
  </ion-item>
+</ion-content>
+
+
+
+
+<ion-content *ngIf="user==null" >
+
+<ion-card class="ion-padding" style="top: 200px;">
+  <ion-label style="font-size: 16px;">Henüz Giriş Yapmadınız</ion-label>
+  <br><br>
+    <ion-button (click)="girisEkraninaGotur()"   shape="round">
+      Giriş Yap
+    </ion-button>
+
+</ion-card>
+
+
+
 </ion-content>

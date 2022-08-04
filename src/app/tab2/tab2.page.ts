@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { LoadingController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import {
   getDownloadURL,
   ref,
@@ -20,7 +20,7 @@ export class Tab2Page implements OnInit {
   public iller: any = '';
   public image = null;
   public imageUrl: string;
-  public user: any;
+  public user: any=null;
   public ilanTuru: string;
   public ilan_tarihi: string;
   public ilan_sahibi_id: any;
@@ -35,18 +35,20 @@ export class Tab2Page implements OnInit {
     private http: HttpClient,
     private navCtrl: NavController,
     private storage: Storage,
- private loadingCtrl:LoadingController
+ private loadingCtrl:LoadingController,
+ private alertCtrl:AlertController,
   ) {
 
     this.user = JSON.parse(localStorage.getItem('user'));
 
-    if(!this.user){
-      this.navCtrl.navigateRoot('login');
-    }
-    this.kategoriGetir();
-    this.illeriGetir();
+
+
   }
-  ngOnInit() {
+ async ngOnInit() {
+    if(this.user!=null){
+      this.kategoriGetir();
+      this.illeriGetir();
+    }
 
 
   }
@@ -91,7 +93,7 @@ export class Tab2Page implements OnInit {
           '&gorulme=1&ilanUid=' +
           this.ilanUid +
           '&resim_url=' +
-          this.imageUrl
+          this.imageUrl+'&telefon='+this.user.telefon
       )
       .subscribe((data) => {
 
@@ -99,6 +101,10 @@ export class Tab2Page implements OnInit {
 
       });
 
+  }
+
+  girisEkraninaGotur(){
+    this.navCtrl.navigateRoot('login');
   }
 
   async ilanEkle() {

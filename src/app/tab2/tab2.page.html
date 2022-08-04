@@ -1,14 +1,14 @@
 
- <ion-header [translucent]="false" class="ion-no-border">
+ <ion-header *ngIf="user!=null" [translucent]="false" class="ion-no-border">
   <ion-toolbar style="text-align: center;">
 
     <ion-title>İlan Ekle</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="user!=null" [fullscreen]="true">
 
   <ion-radio-group [(ngModel)]="ilanTuru" value="sahiplendirme">
-    <ion-list-header>
+    <ion-list-header style="text-align: justify;">
       <ion-label>İlan Türü</ion-label>
     </ion-list-header>
     <ion-item>
@@ -107,7 +107,7 @@
   </ion-row>
 
   <ion-item lines="none" >
-    <ion-label position="stacked" style="color: #d38c32;">Açıklama</ion-label><br>
+    <ion-label position="stacked" style="font-weight: 600;">Açıklama</ion-label><br>
     <ion-input [(ngModel)]="aciklama" type="text" placeholder="Neden bu ilanı yayınlıyorsun ?"></ion-input>
 
 
@@ -119,3 +119,21 @@
     Yayınla
   </ion-button>
 </ion-content>
+
+
+
+
+<ion-content *ngIf="user==null" >
+
+  <ion-card class="ion-padding" style="top: 200px;">
+    <ion-label style="font-size: 16px;">Henüz Giriş Yapmadınız</ion-label>
+    <br><br>
+      <ion-button  (click)="girisEkraninaGotur()"  shape="round">
+        Giriş Yap
+      </ion-button>
+
+  </ion-card>
+
+
+
+  </ion-content>
