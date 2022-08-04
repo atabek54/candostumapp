@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="kullaniciIlanlari.length!=0">
   <ion-list>
     <ion-item-sliding *ngFor="let item of kullaniciIlanlari">
       <ion-item (click)="openDetayModal(item.ilanUid)" routerLinkActive="router-link-active"  >
@@ -31,3 +31,18 @@
   </ion-list>
 
 </ion-content>
+
+<ion-content *ngIf="this.kullaniciIlanlari.length==0" >
+
+  <ion-card class="ion-padding" style="top: 200px;">
+    <ion-label style="font-size: 16px;">Henüz İlanınız Yok</ion-label>
+    <br><br>
+      <ion-button style="--background: black;border-radius: 20px;"   (click)="ilanEkleEkraninaGotur()"  shape="round">
+       İlan Ver
+      </ion-button>
+
+  </ion-card>
+
+
+
+  </ion-content>

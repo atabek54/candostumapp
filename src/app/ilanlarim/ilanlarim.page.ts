@@ -17,7 +17,7 @@ import { deleteObject } from '@firebase/storage';
 })
 export class IlanlarimPage implements OnInit {
 public user:any;
-public kullaniciIlanlari:any;
+public kullaniciIlanlari:any='';
   constructor(private http:HttpClient,private modalCtrl:ModalController,private alertCtrl: AlertController,private navCtrl:NavController, private loadingCtrl:LoadingController,
     private storage:Storage
     ) {
@@ -42,9 +42,13 @@ async  kullaniciIlanlariGetir() {
       .subscribe((data) => {
 
         this.kullaniciIlanlari = data;
+        console.log(this.kullaniciIlanlari.length);
         loading.dismiss();
 
       });
+  }
+  ilanEkleEkraninaGotur(){
+    this.navCtrl.navigateRoot('tabs/tab1');
   }
   dismissModal(){
     this.modalCtrl.dismiss();
