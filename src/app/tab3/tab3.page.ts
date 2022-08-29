@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -24,7 +25,7 @@ export class Tab3Page implements OnInit {
     private http: HttpClient,
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
-    private alerCtrl: AlertController
+  private service: AppComponent
   ) {
     this.user = JSON.parse(localStorage.getItem('user'));
 
@@ -43,7 +44,7 @@ export class Tab3Page implements OnInit {
   kullaniciIlanlariGetir() {
     this.http
       .get(
-        'https://webservis.online/candostum.php?servis_adi=kullanicinin_ilanlarini_getir&user_id=' +
+      this.service.kullanici_ilanlarini_getir +
           this.user.id
       )
       .subscribe((data) => {

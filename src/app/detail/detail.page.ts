@@ -1,3 +1,6 @@
+import { AppComponent } from './../app.component';
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +18,7 @@ public ilan:any='';
 public telefon:any;
 public user:any='';
 
-  constructor(private http:HttpClient,private activatedRoute: ActivatedRoute,private navCtrl:NavController,private call:CallNumber,private loading:LoadingController) {
+  constructor(private http:HttpClient,private activatedRoute: ActivatedRoute,private navCtrl:NavController,private call:CallNumber,private loading:LoadingController,private service: AppComponent) {
     this.ilanUid = this.activatedRoute.snapshot.paramMap.get('id');
     this.user=JSON.parse(localStorage.getItem('user'));
 
@@ -26,7 +29,7 @@ async detayGetir(){
   const loading=await this.loading.create();
   loading.present();
 
-  this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.ilanUid).subscribe(data=>{
+  this.http.get(this.service.ilan_detay_getir+this.ilanUid).subscribe(data=>{
     this.ilan=data;
 
   });
@@ -39,7 +42,7 @@ async detayGetir(){
 
  }
 back(){
-this.navCtrl.back()
+this.navCtrl.back();
 }
 
 callNumber(){

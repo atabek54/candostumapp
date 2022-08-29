@@ -1,7 +1,17 @@
+import { AppComponent } from './../app.component';
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable max-len */
+/* eslint-disable no-var */
+/* eslint-disable space-before-function-paren */
+/* eslint-disable eqeqeq */
+/* eslint-disable object-shorthand */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
-import { FormBuilder, FormGroup, Validators,FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +21,10 @@ import { FormBuilder, FormGroup, Validators,FormsModule } from '@angular/forms';
 export class LoginPage implements OnInit {
   credentials1: FormGroup;
   credentials2: FormGroup;
-  public isLogin:boolean=true;
-  public iller:any='';
-  public konum:string;
-  public eposta:any;
+  public isLogin : boolean=true;
+  public iller: any='';
+  public konum: string;
+  public eposta: any;
   user=null;
 
   constructor( private fb: FormBuilder,
@@ -22,12 +32,13 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private modalCtrl:ModalController,
+    private modalCtrl: ModalController,
+    private service:AppComponent
 
     ) {
-http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
+http.get(this.service.illeri_getir).subscribe(data=>{
   this.iller=data;
-})
+});
      }
   get email() {
     return this.credentials1.get('email');
@@ -59,7 +70,7 @@ http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subsc
 
     const user = JSON.parse(localStorage.getItem('user'));
 if(user){
-  if(user.verification=='false'){
+  if(user.verification =='false'){
     this.navCtrl.navigateRoot('verification');
 
   }
@@ -79,7 +90,7 @@ if(user){
     this.credentials2=this.fb.group({
       ad_soyad:['',[Validators.required,Validators.minLength(4)]],
       telefon:['',[Validators.required,Validators.minLength(11)]]
-    })
+    });
   }
 
   atla(){
@@ -90,7 +101,7 @@ if(user){
     if (this.isLogin == true) {
       this.http
         .get(
-          'https://webservis.online/candostum.php?servis_adi=kullanici_giris&email=' +
+         this.service.kullanici_giris +
           this.credentials1.value.email +
             '&sifre=' +
             this.credentials1.value.sifre
@@ -125,7 +136,7 @@ if(user){
     } else if (this.isLogin == false) {
       this.http
         .get(
-          'https://webservis.online/candostum.php?servis_adi=kullanici_kayit&email=' +
+          this.service.kullanici_kayit +
           this.credentials1.value.email +
             '&sifre=' +
             this.credentials1.value.sifre +
@@ -165,7 +176,7 @@ if(user){
     }
   }
 changeSign(){
-  this.isLogin=!this.isLogin
+  this.isLogin=!this.isLogin;
 
 }
 modalDismiss(){
@@ -174,9 +185,9 @@ modalDismiss(){
 
 sendNewPasswordEmail(){
   var randomstring = Math.random().toString(36).slice(-8);
-  this.http.get('https://webservis.online/candostum.php?servis_adi=kullanici_getir&email='+this.eposta).subscribe(data=>{
+  this.http.get(this.service.kullanici_getir+this.eposta).subscribe(data=>{
     if(data){
-      this.http.get('https://webservis.online/candostum.php?servis_adi=sifre_sifirla&email='+this.eposta+'&password='+randomstring).subscribe(data=>{
+      this.http.get(this.service.sifre_sifirla+this.eposta+'&password='+randomstring).subscribe(data=>{
 
 
 
@@ -189,7 +200,7 @@ sendNewPasswordEmail(){
     else{
       this.presentToast('Kullanıcı kayıtlı değil.','danger');
     }
-  })
+  });
 
 }
 

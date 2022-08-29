@@ -1,3 +1,7 @@
+import { AppComponent } from './../app.component';
+/* eslint-disable object-shorthand */
+/* eslint-disable curly */
+/* eslint-disable max-len */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
@@ -16,10 +20,11 @@ import { deleteObject } from '@firebase/storage';
   styleUrls: ['./ilanlarim.page.scss'],
 })
 export class IlanlarimPage implements OnInit {
-public user:any;
-public kullaniciIlanlari:any='';
-  constructor(private http:HttpClient,private modalCtrl:ModalController,private alertCtrl: AlertController,private navCtrl:NavController, private loadingCtrl:LoadingController,
-    private storage:Storage
+public user: any;
+public kullaniciIlanlari: any='';
+  constructor(private http: HttpClient,private modalCtrl: ModalController,private alertCtrl: AlertController,private navCtrl: NavController, private loadingCtrl: LoadingController,
+    private storage: Storage,
+    private service: AppComponent
     ) {
     this.user = JSON.parse(localStorage.getItem('user'));
     if(this.user)
@@ -35,8 +40,8 @@ async  kullaniciIlanlariGetir() {
   const loading=await this.loadingCtrl.create();
   loading.present();
     this.http
-      .get(
-        'https://webservis.online/candostum.php?servis_adi=kullanicinin_ilanlarini_getir&user_id=' +
+      .get(this.service.kullanici_ilanlarini_getir
+         +
           this.user.id
       )
       .subscribe((data) => {
@@ -65,8 +70,8 @@ async  kullaniciIlanlariGetir() {
             const loading=await this.loadingCtrl.create();
   loading.present();
             this.http
-              .get(
-                'https://webservis.online/candostum.php?servis_adi=ilani_sil&ilanUid=' +
+              .get(this.service.ilani_sil
+                 +
                   ilanUid
               )
               .subscribe((data) => {

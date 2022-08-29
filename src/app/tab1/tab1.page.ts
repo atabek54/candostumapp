@@ -1,3 +1,7 @@
+/* eslint-disable max-len */
+import { AppComponent } from './../app.component';
+/* eslint-disable object-shorthand */
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
@@ -22,7 +26,7 @@ export class Tab1Page implements OnInit {
 
 
 
-    private modalCtrl:ModalController,private navCtrl:NavController,private http:HttpClient,private activatedRoute: ActivatedRoute) {
+    private modalCtrl:ModalController,private navCtrl:NavController,private http:HttpClient,private activatedRoute: ActivatedRoute,private service:AppComponent) {
 
 
 
@@ -47,18 +51,18 @@ export class Tab1Page implements OnInit {
   }
   tumIlanlariGetir(){
 
-    this.http.get('https://webservis.online/candostum.php?servis_adi=tum_ilanlari_getir').subscribe(data=>{
+    this.http.get(this.service.tum_ilanlari_getir).subscribe(data=>{
       this.tumIlanlar=data;
-    })
+    });
   }
 
   yeniIlanlariGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=en_yeni_ilanlari_getir').subscribe(data=>{
+    this.http.get(this.service.en_yeni_ilanlari_getir).subscribe(data=>{
 this.enYeniIlanlar=data;
 this.enYeniIlanlar=this.enYeniIlanlar.slice(0,15);
 
 
-    })
+    });
   }
 
 

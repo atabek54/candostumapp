@@ -1,3 +1,8 @@
+import { AppComponent } from './../app.component';
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable eqeqeq */
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
@@ -35,8 +40,8 @@ export class Tab2Page implements OnInit {
     private http: HttpClient,
     private navCtrl: NavController,
     private storage: Storage,
- private loadingCtrl:LoadingController,
- private alertCtrl:AlertController,
+ private loadingCtrl: LoadingController,
+ private service: AppComponent
   ) {
 
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -55,7 +60,7 @@ export class Tab2Page implements OnInit {
   turleriGetir() {
     this.http
       .get(
-        'https://webservis.online/candostum.php?servis_adi=tur_getir&kategori=' +
+        this.service.tur_getir +
           this.kategori
       )
       .subscribe((data) => {
@@ -72,7 +77,7 @@ export class Tab2Page implements OnInit {
 
     this.http
       .get(
-        'https://webservis.online/candostum.php?servis_adi=ilan_ekle&ilan_turu=' +
+       this.service.ilan_ekle+
           this.ilanTuru +
           '&kategori=' +
           this.kategori +
@@ -134,7 +139,7 @@ export class Tab2Page implements OnInit {
           for (let index = 0; index < sayac; index++) {
             this.http
               .get(
-                'https://webservis.online/candostum.php?servis_adi=ilanUid_kontrolu&ilanUid=' +
+              this.service.ilan_uid_kontrol +
                   this.ilanUid
               )
               .subscribe((data) => {
@@ -155,7 +160,7 @@ this.aciklama=undefined;
                   this.ilanUidUret();
                   this.http
                     .get(
-                      'https://webservis.online/candostum.php?servis_adi=ilanUid_kontrolu&ilanUid=' +
+                this.service.ilan_uid_kontrol +
                         this.ilanUid
                     )
                     .subscribe((data) => {
@@ -177,14 +182,14 @@ this.aciklama=undefined;
   }
   kategoriGetir() {
     this.http
-      .get('https://webservis.online/candostum.php?servis_adi=kategori_getir')
+      .get(this.service.kategori_getir)
       .subscribe((data) => {
         this.kategoriler = data;
       });
   }
   illeriGetir() {
     this.http
-      .get('https://webservis.online/candostum.php?servis_adi=illeri_getir')
+      .get(this.service.illeri_getir)
       .subscribe((data) => {
         this.iller = data;
 

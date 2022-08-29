@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+import { AppComponent } from './../app.component';
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +22,7 @@ export class FilterPage implements OnInit {
   public konum:string;
   public cinsiyet:string;
   public ilanTuru:string;
-  constructor(private activatedRoute: ActivatedRoute,private modalCtrl:ModalController,private http:HttpClient) {
+  constructor(private activatedRoute: ActivatedRoute,private modalCtrl:ModalController,private http:HttpClient,private service:AppComponent) {
    this.kategoriGetir();
    this.illeriGetir();
    }
@@ -31,15 +34,15 @@ export class FilterPage implements OnInit {
   }
 
   kategoriGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=kategori_getir').subscribe(data=>{
+    this.http.get(this.service.kategori_getir).subscribe(data=>{
       this.kategoriler=data;
     });
   }
   illeriGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=illeri_getir').subscribe(data=>{
+    this.http.get(this.service.illeri_getir).subscribe(data=>{
   this.iller=data;
 
-})
+});
   }
   closeModal(){
 
@@ -55,9 +58,9 @@ export class FilterPage implements OnInit {
     modal.present();
   }
   turGetir(){
-    this.http.get('https://webservis.online/candostum.php?servis_adi=tur_getir&kategori='+this.kategori).subscribe(data=>{
+    this.http.get(this.service.tur_getir+this.kategori).subscribe(data=>{
 this.turler=data;
-    })
+    });
   }
 temizle(){
    this.kategori=undefined;

@@ -1,7 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-import { LoadingController, ModalController,  } from '@ionic/angular';
+import { LoadingController, ModalController, } from '@ionic/angular';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-detaymodal',
@@ -10,43 +14,44 @@ import { LoadingController, ModalController,  } from '@ionic/angular';
 })
 export class DetaymodalPage implements OnInit {
 
-  public telefon:any;
-  public user:any=''
-public ilan:any='';
-@Input() id: string;
-  constructor(private http:HttpClient,private modalCtrl:ModalController,private call:CallNumber,private loading:LoadingController) {
-    this.user=JSON.parse(localStorage.getItem('user'));
+  public telefon: any;
+  public user: any = '';
+  public ilan: any = '';
+  @Input() id: string;
+  constructor(private http: HttpClient, private modalCtrl: ModalController, private call: CallNumber, private loading: LoadingController, private service: AppComponent) {
+    this.user = JSON.parse(localStorage.getItem('user'));
 
     this.detayGetir();
-   }
+  }
 
-   callNumber(){
+  callNumber() {
     this.call.callNumber(this.ilan.telefon, true)
-    .then(res => {})
-    .catch(err => {});    }
+      .then(res => { })
+      .catch(err => { });
+  }
 
 
-  async detayGetir(){
-    const loading=await this.loading.create();
+  async detayGetir() {
+    const loading = await this.loading.create();
     loading.present();
 
-    this.http.get('https://webservis.online/candostum.php?servis_adi=ilan_detayi_getir&ilanUid='+this.id).subscribe(data=>{
-      this.ilan=data;
+    this.http.get(this.service.ilan_detay_getir + this.id).subscribe(data => {
+      this.ilan = data;
 
     });
     loading.dismiss();
-   }
+  }
   ngOnInit() {
 
-this.detayGetir();
+    this.detayGetir();
 
 
 
- }
+  }
 
-back(){
-this.modalCtrl.dismiss();
-}
+  back() {
+    this.modalCtrl.dismiss();
+  }
 
 
 }

@@ -14,12 +14,14 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+
         "@angular-eslint/component-class-suffix": [
           "error",
           {
             "suffixes": ["Page", "Component"]
           }
         ],
+
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -36,7 +38,9 @@
             "style": "camelCase"
           }
         ]
+
       }
+
     },
     {
       "files": ["*.html"],
