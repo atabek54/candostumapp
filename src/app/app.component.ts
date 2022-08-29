@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   //servisler
-  kullanici_giris= 'https://webservis.online/candostum.php?servis_adi=kullanici_giris&email=';
+  kullanici_giris= 'url';
   kullanici_kayit='https://webservis.online/candostum.php?servis_adi=kullanici_kayit&email=';
   kullanici_getir='https://webservis.online/candostum.php?servis_adi=kullanici_getir&email=';
   kullanici_bilgi_guncelle='https://webservis.online/candostum.php?servis_adi=kullanici_bilgileri_guncelle&ad_soyad=';
